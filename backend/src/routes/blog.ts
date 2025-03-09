@@ -17,7 +17,9 @@ export const blogRouter = new Hono<{
 
 blogRouter.use("/*", async (c, next) => {
   console.log("test in blog route")
-  const authHeader = c.req.header("authorization") || "";
+  let authHeader = c.req.header("authorization") || "";
+  const tokens = authHeader.split(" ");
+  authHeader = tokens[1];
   console.log(authHeader)
   try {
         const payload = await verify(authHeader, c.env.JWT_SECRET);
