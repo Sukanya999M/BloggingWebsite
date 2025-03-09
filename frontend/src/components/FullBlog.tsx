@@ -3,6 +3,11 @@ import { Appbar } from "./Appbar"
 import { Avatar } from "./BlogCard"
 
 export const FullBlog = ({ blog }: {blog: Blog}) => {
+    function getRandomDate(): Date{
+        let start = new Date(2020, 0, 1);
+        let end = new Date(2022, 0, 1);
+        return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+    }
     return <div>
         <Appbar />
         <div className="flex justify-center">
@@ -12,7 +17,7 @@ export const FullBlog = ({ blog }: {blog: Blog}) => {
                         {blog.title}
                     </div>
                     <div className="text-slate-500 pt-2">
-                        Post on 2nd December 2023
+                        Post on {getRandomDate().toISOString()}
                     </div>
                     <div className="pt-4">
                         {blog.content}
@@ -31,7 +36,7 @@ export const FullBlog = ({ blog }: {blog: Blog}) => {
                                 {blog.author.name || "Anonymous"}
                             </div>
                             <div className="pt-2 text-slate-500">
-                                Random catch phrase about the author's ability to grab the user's attention
+                                Random catch phrase about user
                             </div>
                         </div>
                     </div>  
