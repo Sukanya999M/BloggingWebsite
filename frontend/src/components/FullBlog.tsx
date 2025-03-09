@@ -4,8 +4,8 @@ import { Avatar } from "./BlogCard"
 
 export const FullBlog = ({ blog }: {blog: Blog}) => {
     function getRandomDate(): Date{
-        let start = new Date(2020, 0, 1);
-        let end = new Date(2022, 0, 1);
+        let start = new Date(2025, 2, 1);
+        let end = new Date(2025, 2, 2);
         return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
     }
     return <div>
@@ -17,7 +17,7 @@ export const FullBlog = ({ blog }: {blog: Blog}) => {
                         {blog.title}
                     </div>
                     <div className="text-slate-500 pt-2">
-                        Post on {getRandomDate().toISOString()}
+                        Post on {getRandomDate().toISOString().split("T")[0]}
                     </div>
                     <div className="pt-4">
                         {blog.content}
